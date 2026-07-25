@@ -1,0 +1,21 @@
+- class_name: 技术博客
+  class_desc: 前端开发者博客
+  link_list:
+    - name: GitHub
+      link: https://github.com
+      avatar: /images/github.png
+      descr: 全球最大的代码托管平台
+      rss: https://github.com/feed.xml
+
+    - name: Hexo
+      link: https://hexo.io
+      avatar: /images/hexo.png
+      descr: 快速、简单、高效的博客框架
+
+- class_name: 我的朋友
+  class_desc: 认识的一些朋友
+  link_list:
+    - name: 张三博客
+      link: https://example.com
+      avatar: /images/avatar.png
+      descr: 一个技术博客

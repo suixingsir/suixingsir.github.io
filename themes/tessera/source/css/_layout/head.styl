@@ -1,0 +1,364 @@
+#page-header
+  // Tessera 采用卡片式封面，#page-header 仅作为固定 Dock 导航的容器（自身高度为 0）
+  position: relative
+  width: 100%
+
+  &.not-top-img
+    margin-bottom: 0
+    height: 0
+    background: 0
+
+    .title-seo
+      display: none
+
+  &.nav-fixed
+    #nav
+      // 下滑后：底部出现分割线 + 轻微阴影，体现层次关系
+      border-bottom-color: var(--glass-border)
+      box-shadow: 0 4px 18px rgba(0, 0, 0, .08)
+
+      #blog-info
+        color: var(--font-color)
+
+        &:hover
+          color: $light-blue
+
+        .site-name
+          text-shadow: none
+
+        // 仅文章页存在 nav-page-title 时才滚出博客标题，首页/普通页保持标题常驻
+        &:has(.nav-page-title)
+          .nav-site-title
+            opacity: 0
+            transform: translateY(-100%)
+            pointer-events: none
+
+        .nav-page-title
+          opacity: 1
+          visibility: visible
+          transform: translateY(0)
+
+      a,
+      span.site-page,
+      #toggle-menu
+        color: var(--font-color)
+        text-shadow: none
+
+        &:hover
+          color: $light-blue
+
+  &.fixed
+    & + .layout
+      #card-toc
+        .toc-content
+          max-height: calc(100vh - 170px)
+
+#page
+  .page-title
+    margin: 0 0 10px
+    font-weight: bold
+    font-size: 2em
+
+// for not top_img
+#post
+  & > #post-info
+    margin-bottom: 30px
+
+    .post-title
+      padding-bottom: 4px
+      border-bottom: 1px solid var(--light-grey)
+      color: var(--text-highlight-color)
+
+      .post-edit-link
+        float: right
+
+    #post-meta,
+    #post-meta a
+      color: #78818a
+
+#post-info
+  .post-title
+    @extend .limit-more-line
+    margin-bottom: 8px
+    color: var(--white)
+    font-weight: normal
+    font-size: 2.5em
+    line-height: 1.5
+    -webkit-line-clamp: 3
+
+    +maxWidth768()
+      font-size: 2.1em
+
+    .post-edit-link
+      padding-left: 10px
+
+  #post-meta
+    color: var(--light-grey)
+    font-size: 95%
+
+    +minWidth768()
+      > .meta-secondline
+        > span:first-child
+          display: none
+
+    +maxWidth768()
+      font-size: 90%
+
+      > .meta-firstline,
+      > .meta-secondline
+        display: inline
+
+    .post-meta
+      &-separator
+        margin: 0 5px
+
+      &-icon
+        margin-right: 4px
+
+      &-label
+        if hexo-config('post_meta.post.label')
+          margin-right: 4px
+        else
+          display: none
+
+    a
+      color: var(--light-grey)
+      transition: all .3s ease-out
+
+      &:hover
+        color: $text-hover
+        text-decoration: underline
+
+    if hexo-config('post_meta.post.date_format') == 'relative'
+      time
+        display: none
+
+#nav
+  // —— 顶栏：与顶部贴合的全宽磨砂玻璃条；置顶时无分割线，下滑后底部出现分割线 + 阴影
+  position: fixed
+  top: 0
+  right: 0
+  left: 0
+  z-index: 91
+  display: flex
+  align-items: center
+  // 背景条铺满整行；内容限制在 1170 宽并居中（与正文对齐）
+  padding: 0 unquote('max(24px, calc((100% - 1170px) / 2))')
+  width: 100%
+  height: 56px
+  border-bottom: 1px solid transparent
+  background: var(--glass-bg)
+  backdrop-filter: saturate(180%) blur(20px)
+  -webkit-backdrop-filter: saturate(180%) blur(20px)
+  font-size: 1.3em
+  transition: border-color .3s ease, box-shadow .3s ease, background .3s ease
+
+  +minWidth2000()
+    padding: 0 20%
+
+  +maxWidth768()
+    padding: 0 16px
+
+  #blog-info
+    position: relative
+    flex: 1
+    color: var(--font-color)
+    @extend .limit-one-line
+
+    .site-icon
+      margin-right: 6px
+      height: 36px
+      vertical-align: middle
+
+    // 博客标题 / 文章标题 —— 垂直滚动切换（替代原本的瞬切）
+    .nav-site-title
+      // inline-flex + 居中：让 logo 图标与站名严格同一水平线（原 inline-block 靠 vertical-align 对不齐）
+      display: inline-flex
+      align-items: center
+      // 按行盒中线对齐：否则 inline-flex 钉在文字基线上、下方留出行距空白，整组被挤得偏高
+      vertical-align: middle
+      transition: opacity .4s cubic-bezier(.4, 0, .2, 1), transform .4s cubic-bezier(.4, 0, .2, 1)
+
+    .nav-page-title
+      position: absolute
+      top: 0
+      left: 0
+      display: inline-flex
+      align-items: center
+      height: 100%
+      opacity: 0
+      visibility: hidden
+      transform: translateY(100%)
+      transition: opacity .4s cubic-bezier(.4, 0, .2, 1), transform .4s cubic-bezier(.4, 0, .2, 1), visibility .4s
+
+  #toggle-menu
+    display: none
+    padding: 2px 0 0 6px
+    vertical-align: top
+
+  a,
+  span.site-page,
+  .site-name,
+  #toggle-menu
+    color: var(--font-color)
+
+    &:hover
+      color: $theme-color
+
+  .site-name
+    font-weight: bold
+
+  .menus_items
+    display: inline
+
+    .menus_item
+      position: relative
+      display: inline-block
+      padding: 0
+
+      &:hover
+        .menus_item_child
+          display: block
+
+        & > span > i:last-child
+          transform: rotate(180deg)
+
+      & > span > i:last-child
+        padding: 4px
+        transition: transform .3s
+
+      .menus_item_child
+        position: absolute
+        right: 0
+        display: none
+        margin-top: 8px
+        padding: 0
+        width: max-content
+        background-color: var(--sidebar-bg)
+        box-shadow: 0 5px 20px -4px rgba($dark-black, .5)
+        animation: sub_menus .3s .1s ease both
+        addBorderRadius(5)
+
+        &:before
+          position: absolute
+          top: -8px
+          left: 0
+          width: 100%
+          height: 20px
+          content: ''
+
+        li
+          list-style: none
+
+          &:hover
+            background: var(--text-bg-hover)
+
+          if hexo-config('rounded_corners_ui')
+            &:first-child
+              border-top-left-radius: 5px
+              border-top-right-radius: 5px
+
+            &:last-child
+              border-bottom-right-radius: 5px
+              border-bottom-left-radius: 5px
+
+          a
+            display: inline-block
+            padding: 8px 16px
+            width: 100%
+            color: var(--font-color) !important
+            text-shadow: none !important
+
+  &.hide-menu
+    #toggle-menu
+      display: inline-block !important
+
+      .site-page
+        font-size: inherit
+
+    .menus_items
+      display: none
+
+    #search-button span:not(.site-page)
+      display: none
+
+  #menus
+    display: flex
+    align-items: center
+
+  #search-button
+    display: inline-flex
+    align-items: center
+
+  .site-page
+    position: relative
+    font-size: .78em
+    cursor: pointer
+
+    // 顶层导航项 —— 胶囊药丸造型
+    &:not(.child)
+      display: inline-flex
+      align-items: center
+      margin: 0 2px
+      padding: 5px 14px
+      border: 1px solid transparent
+      border-radius: 999px
+      line-height: 1.5
+      white-space: nowrap
+      transition: background .35s ease, border-color .35s ease, color .35s ease, box-shadow .35s ease, transform .35s ease, backdrop-filter .35s ease
+
+      i
+        transition: transform .3s ease
+
+      // 悬浮 —— 纯玻璃质感：磨砂折射 + 细边 + 柔影（无白色填充）
+      &:hover
+        border-color: rgba(140, 150, 170, .25)
+        box-shadow: var(--card-box-shadow)
+        backdrop-filter: saturate(180%) blur(16px)
+        -webkit-backdrop-filter: saturate(180%) blur(16px)
+        transform: translateY(-1px) scale(1.02)
+
+        i.fa-search,
+        i.fa-bars
+          transform: scale(1.12)
+
+  .nav-page-title
+    position: relative
+    overflow: hidden
+
+    & > :first-child,
+    & > :last-child
+      display: inline-block
+      transition: all .3s ease-in-out
+
+    & > :last-child
+      position: absolute
+      top: 50%
+      left: 0
+      opacity: 0
+      transform: translateY(-50%) translateY(-10px)
+
+    &:hover
+      & > :last-child
+        opacity: 1
+        transform: translateY(-50%) translateY(0)
+
+      & > :first-child
+        opacity: 0
+        transform: translateY(10px)
+// Tessera 2.1 -- 顶栏去图标杂音（参考安知鱼：纯文字菜单更显高级）
+#nav
+  .menus_items .menus_item
+    & > a.site-page > i.fa-fw:first-child,
+    & > span.site-page > i.fa-fw:first-child
+      display: none
+
+    .site-page
+      font-weight: 500
+
+  #search-button .site-page
+    & > span
+      display: none
+
+    i
+      margin: 0

@@ -1,0 +1,242 @@
+$indexLayout = hexo-config('index_layout') || 1
+$indexEnable = hexo-config('cover.index_enable')
+
+#recent-posts
+  .recent-post-item
+    @extend .cardHover
+    position: relative
+    overflow: hidden
+    margin-bottom: 20px
+
+    if $indexLayout == 6 || ($indexLayout == 7)
+      display: inline-block
+      width: calc(100% / 2 - 8px)
+      vertical-align: top
+
+      +maxWidth768()
+        width: 100%
+
+      +minWidth2000()
+        width: calc(100% / 3 - 8px)
+
+    if $indexLayout == 1 || ($indexLayout == 2 || ($indexLayout == 3))
+      display: flex
+      flex-direction: row
+      align-items: center
+      height: 16.8em
+
+      +maxWidth768()
+        flex-direction: column
+        height: auto
+
+      +minWidth2000()
+        height: 18.8em
+
+    &:hover
+      .post-bg
+        transform: scale(1.1)
+
+    &.ads-wrap
+      display: block !important
+      height: auto !important
+
+    .post_cover
+      overflow: hidden
+
+      if ($indexLayout != 5 && ($indexLayout != 7))
+        +maxWidth768()
+          width: 100%
+          height: 230px
+
+      if $indexLayout == 1 || ($indexLayout == 2 || ($indexLayout == 3))
+        width: 42%
+        height: 100%
+
+        &.right
+          order: 1
+
+          +maxWidth768()
+            order: 0
+
+      if $indexLayout == 4 || ($indexLayout == 5 || ($indexLayout == 6 || ($indexLayout == 7)))
+        width: 100%
+
+        if ($indexLayout == 5 || ($indexLayout == 7))
+          height: 17em
+        else
+          height: 230px
+
+      if ($indexLayout == 5 || ($indexLayout == 7)) && $indexEnable
+        &:before
+          position: absolute
+          z-index: 1
+          width: 100%
+          height: 100%
+          background-color: rgba(18, 18, 18, .4)
+          content: ''
+          backdrop-filter: blur(3px)
+
+      .post-bg
+        z-index: -4
+        @extend .imgHover
+
+    & >.recent-post-info
+      +maxWidth768()
+        padding: 20px 20px 30px
+        width: 100%
+
+      if $indexLayout == 1 || ($indexLayout == 2 || ($indexLayout == 3))
+        padding: 0 40px
+        width: 58%
+
+      if $indexLayout == 4 || ($indexLayout == 5 || ($indexLayout == 6 || ($indexLayout == 7)))
+        padding: 30px 30px 25px
+
+      if ($indexLayout == 5 || ($indexLayout == 7)) && $indexEnable
+        &:not(.no-cover)
+          position: absolute
+          top: 50%
+          z-index: 2
+          width: 100%
+          color: var(--text-highlight-color)
+          transform: translateY(-50%)
+          --text-highlight-color: rgba(255, 255, 255, 1)
+          --card-meta: rgba(255, 255, 255, .7)
+
+      &.no-cover
+        +maxWidth768()
+          padding: 30px 20px
+
+        if $indexLayout == 1 || ($indexLayout == 2 || ($indexLayout == 3))
+          width: 100%
+
+        if $indexLayout == 4 || ($indexLayout == 5 || ($indexLayout == 6 || ($indexLayout == 7)))
+          padding: 35px 30px
+
+      & > .article-title
+        @extend .limit-more-line
+        color: var(--text-highlight-color)
+        font-size: 1.55em
+        line-height: 1.4
+        transition: all .2s ease-in-out
+        -webkit-line-clamp: 2
+
+        .sticky
+          margin-right: 10px
+          color: $sticky-color
+          transform: rotate(45deg)
+
+        +maxWidth768()
+          font-size: 1.43em
+
+        &:hover
+          color: $text-hover
+
+      & > .article-meta-wrap
+        margin: 6px 0
+        color: var(--card-meta)
+        font-size: .9em
+
+        & > .post-meta-date
+          cursor: default
+
+        i
+          margin: 0 4px 0 0
+
+        .fa-spinner
+          margin: 0
+
+        .article-meta-label
+          if hexo-config('post_meta.page.label')
+            padding-right: 4px
+          else
+            display: none
+
+        .article-meta-separator
+          margin: 0 6px
+
+        .article-meta-link
+          margin: 0 4px
+
+        if hexo-config('post_meta.page.date_format') == 'relative'
+          time
+            display: none
+
+        a
+          color: var(--card-meta)
+
+          &:hover
+            color: $text-hover
+            text-decoration: underline
+
+      & > .content
+        @extend .limit-more-line
+        -webkit-line-clamp: 2
+        word-break: break-word
+
+// Tessera 等高网格（index_layout: 6）—— 安知鱼式图上文下卡片
+// CSS Grid 等高布局：同行卡片自动等高，位置纯 CSS 持有（侧栏切换可平滑过渡）
+if $indexLayout == 6
+  #recent-posts
+    .recent-post-items
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      gap: 16px
+
+      +maxWidth768()
+        grid-template-columns: 1fr
+
+      +minWidth2000()
+        grid-template-columns: repeat(3, 1fr)
+
+    .recent-post-item
+      display: flex
+      flex-direction: column
+      margin-bottom: 0
+      width: 100%
+
+      .post_cover
+        flex-shrink: 0
+        height: 200px
+
+      & > .recent-post-info
+        display: flex
+        flex: 1
+        flex-direction: column
+        padding: 16px 22px 16px
+
+        & > .article-title
+          font-size: 1.26em
+          font-weight: 600
+          line-height: 1.45
+
+        & > .content
+          margin-top: 4px
+          -webkit-line-clamp: 2
+          font-size: .92em
+
+        // meta 沉底（安知鱼式）：弹性占位把元信息推到卡片底部
+        & > .article-meta-wrap
+          order: 3
+          margin: auto 0 0
+          padding-top: 10px
+
+// 瀑布流防闪烁：排版完成前隐藏，grid-ready 后淡入；0.9s 兜底强制显示（JS 失效时不丢内容）
+#recent-posts.masonry
+  .recent-post-items
+    opacity: 0
+    animation: masonry-fallback 0s linear .9s forwards
+
+    &.grid-ready
+      opacity: 1
+      animation: none
+      transition: opacity .25s ease
+
+@keyframes masonry-fallback
+  to
+    opacity: 1
+
+// 瀑布流卡片的位置由 JS 逐帧写入 transform，不要再叠加 CSS transform 过渡（会滞后 0.3s）
+#recent-posts.masonry
+  .recent-post-item
+    transition: border-color .3s ease, box-shadow .3s ease

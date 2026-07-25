@@ -1,0 +1,10 @@
+-
+  const isFixedClass = theme.nav.fixed ? ' fixed' : ''
+
+//- Tessera 顶栏容器：主题采用卡片式封面（封面置于文章顶部磨砂卡片内），
+//- 不使用 Butterfly 式的全幅顶部 banner，故此处仅渲染 Dock 导航，
+//- 以及供 SEO 使用的隐藏标题（.not-top-img 下默认不可见）。
+header#page-header.not-top-img(class=isFixedClass.trim())
+  include ./nav.pug
+  if globalPageType !== 'post'
+    h1.title-seo=page.title || page.tag || page.category || config.title

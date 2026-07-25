@@ -1,0 +1,39 @@
+{
+  "name": "hexo-theme-tessera",
+  "version": "1.1.2",
+  "description": "A clean, card-based Hexo theme — solid bordered cards with a subtle frosted touch over a Three.js floating glass-shard background, with a single blue accent.",
+  "main": "package.json",
+  "packageManager": "pnpm@11.5.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hexo",
+    "theme",
+    "hexo-theme",
+    "tessera",
+    "threejs",
+    "card",
+    "minimal",
+    "dark-mode",
+    "responsive",
+    "Talyra42",
+    "hexo-theme-tessera"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LumiDesk/hexo-theme-tessera.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LumiDesk/hexo-theme-tessera/issues"
+  },
+  "dependencies": {
+    "hexo-renderer-pug": "^3.0.0",
+    "hexo-renderer-stylus": "^3.0.1",
+    "hexo-util": "^4.0.0",
+    "moment-timezone": "^0.6.0"
+  },
+  "homepage": "https://github.com/LumiDesk/hexo-theme-tessera",
+  "author": "Talyra42",
+  "license": "AGPL-3.0-only"
+}
