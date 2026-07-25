@@ -43,14 +43,14 @@
             span.htop-cat-name= c.name
             if c.icon
               i.htop-cat-icon(class=c.icon)
-  if bn && bn.enable !== false
-    - const bnStyle = bn.image ? `background-image:url(${url_for(bn.image)})` : 'background:linear-gradient(135deg,#1b1f3a,#425AEF)'
-    a.htop-recommend(href=url_for(bn.link || '/') style=bnStyle)
-      .htop-rec-mask
-      .htop-rec-info
-        if bn.tips
-          .htop-rec-tips= bn.tips
-        .htop-rec-title= bn.title
-      .htop-rec-btn
-        i.fas.fa-circle-arrow-right
-        span= bn.button || '更多推荐'
+  //- if bn && bn.enable !== false
+  //-   - const bnStyle = bn.image ? `background-image:url(${url_for(bn.image)})` : 'background:linear-gradient(135deg,#1b1f3a,#425AEF)'
+  //-   a.htop-recommend(href=url_for(bn.link || '/') style=bnStyle)
+  //-     .htop-rec-mask
+  //-     .htop-rec-info
+  //-       if bn.tips
+  //-         .htop-rec-tips= bn.tips
+  //-       .htop-rec-title= bn.title
+  //-     .htop-rec-btn
+  //-       i.fas.fa-circle-arrow-right
+  //-       span= bn.button || '更多推荐'
