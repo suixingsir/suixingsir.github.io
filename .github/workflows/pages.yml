@@ -6,6 +6,11 @@ on:
       - master # default branch
   workflow_dispatch: # 允许在 Actions 页面手动触发
 
+# 同一分支的新推送自动取消上一次还在跑的构建，避免排队
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,7 +34,7 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-npm-cache-
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
       - name: Build
         run: npm run build
       - name: Upload Pages artifact

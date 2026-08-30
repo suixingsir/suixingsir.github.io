@@ -20,11 +20,7 @@ menu:
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
-  清单||fas fa-list:
-    音乐: /music/ || fas fa-music
-    电影: /movies/ || fas fa-video
   关于: /about/ || fas fa-heart
-  
 
 # --------------------------------------
 # 代码块设置
@@ -80,7 +76,8 @@ cover:
     # - xxx.jpg
   # 随机封面目录（站点 source 下的相对路径，如 img/cover 对应 <博客根目录>/source/img/cover/）
   # 把图片丢进该目录即可：未设置 cover 的文章会从中随机取一张作为封面，优先级高于 default_cover
-  random_cover_dir: img/cover
+  # 目前没有封面图，设为 false 避免构建时告警；以后想启用随机封面，改成 img/cover 并把图片放进 source/img/cover/
+  random_cover_dir: false
 
 # 图片加载失败时的替换图
 error_img:
@@ -174,10 +171,10 @@ reward:
 # 文章在线编辑
 # 方便在线浏览并编辑博客源码
 post_edit:
-  enable: false
+  enable: true
   # url: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name/
   # 例如: https://github.com/Talyra42/blog/edit/main/source/
-  url:
+  url: https://github.com/suixingsir/suixingsir.github.io/edit/master/source/
 
 # 相关文章
 related_post:
@@ -237,7 +234,7 @@ aside:
     category: true
   card_author:
     enable: true
-    description:
+    description: 前端开发，记录技术踩坑与生活思考
     button:
       enable: true
       icon: fab fa-github
@@ -245,7 +242,7 @@ aside:
       link: https://github.com/suixingsir
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: 欢迎来到随性先生的博客，记录前端开发中的踩坑与思考。
   card_recent_post:
     enable: true
     # 设为 0 显示全部
@@ -381,7 +378,7 @@ copy:
 
 # 需要安装 hexo-wordcount 插件
 wordcount:
-  enable: false
+  enable: true
   # 在文章元信息中显示字数
   post_wordcount: true
   # 在文章元信息中显示阅读时长
@@ -426,8 +423,8 @@ math:
 search:
   # 可选: algolia_search / local_search / docsearch
   # 不需要搜索则留空
-  use:
-  placeholder:
+  use: local_search
+  placeholder: 搜索文章…
 
   # Algolia 搜索
   algolia_search:
@@ -437,7 +434,7 @@ search:
   # 本地搜索
   local_search:
     # 页面加载时预载搜索数据
-    preload: false
+    preload: true
     # 每篇文章最多显示的结果数，设为 -1 显示全部
     top_n_per_article: 1
     # 反转义 HTML 字符串为可读形式
@@ -485,7 +482,7 @@ comments:
   # 不需要评论则留空
   # 可选: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
   # 两套评论系统的写法: Disqus,Waline
-  use:
+  use: Utterances
   # 在按钮旁显示评论系统名称
   text: true
   # 懒加载: 评论元素进入浏览器视口时才加载评论系统
@@ -550,7 +547,7 @@ waline:
 # Utterances
 # https://utteranc.es/
 utterances:
-  repo:
+  repo: suixingsir/suixingsir.github.io
   # Issue 映射方式: pathname/url/title/og:title
   issue_term: pathname
   # 主题: github-light/github-dark/github-dark-orange/icy-dark/dark-blue/photon-dark

@@ -4,12 +4,12 @@
 
 # Site
 title: 随性先生.
-subtitle: ''
-description: ''
-keywords:
+subtitle: 记录技术踩坑与生活思考
+description: 随性先生的个人博客，记录前端开发与生活中的踩坑、思考与成长。
+keywords: 前端,React,JavaScript,PDF,博客,随性先生
 author: 随性先生-THL.
 language: zh-CN
-timezone: ''
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -80,7 +80,14 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+## 使用 'date' 而非 'mtime'：CI 上文件 mtime 是检出时间，会导致所有文章"更新时间"随每次部署漂移
+updated_option: 'date'
+
+# 本地搜索数据（配合 hexo-generator-searchdb 与主题 local_search）
+search:
+  path: search.json
+  field: post
+  content: true
 
 # Pagination
 ## Set per_page to 0 to disable pagination
@@ -102,30 +109,3 @@ theme: tessera
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
-menu:
-  首页:
-    link: /
-    icon: home
-  归档:
-    link: /archives/
-    icon: archive
-  站点:
-    icon: folder
-    item:
-      分类:
-        link: /categories/
-        icon: folder
-      标签:
-        link: /tags/
-        icon: tag
-
-friend_links:
-  - name: GitHub
-    link: https://github.com/
-    avatar: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-    descr: 全球最大的代码托管平台
-
-  - name: 张三博客
-    link: https://example.com
-    avatar: https://example.com/avatar.png
-    descr: 一个技术博客

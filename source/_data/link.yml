@@ -3,13 +3,12 @@
   link_list:
     - name: GitHub
       link: https://github.com
-      avatar: /images/github.png
+      avatar: https://github.com/favicon.ico
       descr: 全球最大的代码托管平台
-      rss: https://github.com/feed.xml
 
     - name: Hexo
       link: https://hexo.io
-      avatar: /images/hexo.png
+      avatar: https://hexo.io/icon/favicon-32.png
       descr: 快速、简单、高效的博客框架
 
 - class_name: 我的朋友
@@ -17,5 +16,5 @@
   link_list:
     - name: 张三博客
       link: https://example.com
-      avatar: /images/avatar.png
+      avatar: /img/avatar.png
       descr: 一个技术博客
