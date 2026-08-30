@@ -214,7 +214,8 @@ footer:
   copyright:
     enable: true
     version: true
-  custom_text:
+  # 示例：页脚自定义文字，不需要就留空
+  custom_text: 保持热爱，奔赴山海。
 
 # --------------------------------------
 # 侧边栏设置
@@ -234,7 +235,8 @@ aside:
     category: true
   card_author:
     enable: true
-    description: 前端开发，记录技术踩坑与生活思考
+    # 示例简介文案，可改成你自己的介绍
+    description: 记录学习、工作与生活的踩坑与思考
     button:
       enable: true
       icon: fab fa-github
@@ -242,7 +244,8 @@ aside:
       link: https://github.com/suixingsir
   card_announcement:
     enable: true
-    content: 欢迎来到随性先生的博客，记录前端开发中的踩坑与思考。
+    # 示例公告文案，可自行修改
+    content: 欢迎来到随性先生的博客，记录学习与生活中的踩坑与思考。
   card_recent_post:
     enable: true
     # 设为 0 显示全部
@@ -302,7 +305,8 @@ aside:
     # 建站时间到现在的运行时长
     # 格式: 月/日/年 时间，或 年/月/日 时间
     # 不需要此功能则留空
-    runtime_date:
+    # 示例（根据你的实际建站时间修改）:
+    runtime_date: 07/26/2026 01:18:00
 
 # --------------------------------------
 # 右下角按钮

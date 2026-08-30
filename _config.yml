@@ -4,9 +4,12 @@
 
 # Site
 title: 随性先生.
-subtitle: 记录技术踩坑与生活思考
-description: 随性先生的个人博客，记录前端开发与生活中的踩坑、思考与成长。
-keywords: 前端,React,JavaScript,PDF,博客,随性先生
+# 示例副标题，可自行修改
+subtitle: 记录学习、工作与生活的踩坑与思考
+# 示例站点描述（用于 SEO / 分享卡片），可自行修改
+description: 随性先生的个人博客，记录学习、工作与生活中的踩坑与思考。
+# 示例关键词（用于 SEO，逗号分隔），可自行修改
+keywords: 博客,随性先生,技术,生活,踩坑
 author: 随性先生-THL.
 language: zh-CN
 timezone: Asia/Shanghai
