@@ -2,7 +2,7 @@
 title: 记录一次 pdfjs-dist 实现 PDF 文件自动翻页
 date: 2026-08-30 11:30:00
 categories:
-  - 前端
+  - 技术
 tags:
   - React
   - PDF

@@ -21,18 +21,27 @@ npx hexo clean     # 清理缓存后重新构建
 
 ## 写文章
 
-在 `source/_posts/` 下新建 Markdown 文件，必须带 front-matter：
+两种方式任选：
+
+1. 命令行创建：`npx hexo new "文章标题"`（自动在 `source/_posts/` 下建文件）
+2. 手动创建：在 `source/_posts/` 下新建 `.md` 文件
+
+文件开头必须有 front-matter（`---` 之间的部分），例如：
 
 ```markdown
 ---
 title: 文章标题
 date: 2026-08-30 12:00:00
 categories:
-  - 前端
+  - 技术        # 首页三个模块：技术 / 生活 / 随笔，三选一
 tags:
   - React
 ---
 ```
+
+- `categories` 填 `技术` / `生活` / `随笔` 之一，首页开屏的「技术 / 生活 / 随笔」入口会自动跳到对应分类
+- `tags` 可填多个，用 `-` 列表
+- 参考示例：`source/_posts/` 下的 `周末走走-示例文章.md`、`随便写点-示例文章.md`
 
 ## 发布
 

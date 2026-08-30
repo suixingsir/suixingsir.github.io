@@ -843,17 +843,18 @@ home_top:
     - icon: fab fa-php
       color: "#777bb4"
   # 分类入口：建议 2-3 个；color 支持渐变
+  # path 指向对应分类的页面，分类下至少有一篇文章才会生成该页面
   category:
     - name: 技术
-      path: /categories/
+      path: /categories/技术/
       icon: fas fa-dove
       color: "linear-gradient(120deg, #425AEF, #7a8eff)"
     - name: 生活
-      path: /categories/
+      path: /categories/生活/
       icon: fas fa-fire
       color: "linear-gradient(120deg, #f65c2c, #ff9a52)"
     - name: 随笔
-      path: /categories/
+      path: /categories/随笔/
       icon: fas fa-book
       color: "linear-gradient(120deg, #0fb6a5, #4cd9b0)"
   # 推荐位横幅：image 不填则使用主题色渐变兜底
