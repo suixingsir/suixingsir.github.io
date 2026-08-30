@@ -41,7 +41,34 @@ tags:
 
 - `categories` 填 `技术` / `生活` / `随笔` 之一，首页开屏的「技术 / 生活 / 随笔」入口会自动跳到对应分类
 - `tags` 可填多个，用 `-` 列表
-- 参考示例：`source/_posts/` 下的 `周末走走-示例文章.md`、`随便写点-示例文章.md`
+- 参考示例：`source/_posts/` 下的 `周末走走-示例文章.md`、`随便写点-示例文章.md`、`图片和视频怎么发-示例文章.md`
+
+### 图片和视频
+
+**图片**：把文件放到 `source/images/`，文章里引用：
+
+```markdown
+![](/images/你的图片.png)
+```
+
+多张图用主题画廊标签（自动排网格、可放大）：
+
+```markdown
+{% gallery %}
+![](/images/1.png)
+![](/images/2.png)
+{% endgallery %}
+```
+
+**视频**：本地视频放到 `source/videos/`，用 HTML 标签嵌入：
+
+```html
+<video src="/videos/你的视频.mp4" controls style="width:100%"></video>
+```
+
+嵌入 B站 / YouTube：视频页点「分享 → 嵌入」，把 iframe 代码粘到文章里即可。
+
+> 路径以 `/` 开头表示网站根目录；文件会随 `git push` 一起上传，别放太大的文件。
 
 ## 发布
 
