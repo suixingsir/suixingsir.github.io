@@ -70,6 +70,16 @@ tags:
 
 > 路径以 `/` 开头表示网站根目录；文件会随 `git push` 一起上传，别放太大的文件。
 
+### 作品集（密码保护）
+
+`/projects/` 页面是密码保护的：输入简历里写的密码后才显示项目链接。
+
+- 项目链接以 base64 藏在页面脚本里，页面源码中看不到明文链接，爬虫拿不到
+- **修改密码 / 添加项目**：编辑 `scripts/gen-portfolio.ps1` 里的 `$Password` 和 `$ProjectsJson`，运行 `powershell -ExecutionPolicy Bypass -File scripts/gen-portfolio.ps1`，把输出的 HASH 和 DATA 粘回 `source/projects/index.md`，然后推送
+- 默认示例密码是 `123456`，**上线前一定要改**
+
+> 注意：静态站只能做客户端校验——能挡住爬虫和普通访客，但无法真正加密。如果演示服务器本身容易被攻击，建议同时在服务器侧加访问限制（如 Basic Auth / 白名单 / Cloudflare 防护）。
+
 ## 发布
 
 推送到 `master` 分支即可，GitHub Actions 会自动构建并部署：

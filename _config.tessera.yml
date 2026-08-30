@@ -20,6 +20,7 @@ menu:
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
+  作品集: /projects/ || fas fa-briefcase
   关于: /about/ || fas fa-heart
 
 # --------------------------------------
@@ -1020,8 +1021,9 @@ note:
 pjax:
   enable: true
   # 排除不走 pjax 的页面，如 '/music/'
+  # 作品集页有内联脚本，必须整页加载，所以排除
   exclude:
-    # - /xxxxxx/
+    - /projects/
 
 # 注入 css 与脚本（aplayer/meting 音乐播放器）
 aplayerInject:
